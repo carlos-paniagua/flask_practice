@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>一言掲示板</title>
+  <link rel="stylesheet" href="">
+</head>
+<body>
+  <h1>掲示板へようこそ</h1>
+  <form action="/result" method="POST">
+    <input type="hidden" name="comment_box">
+    <label for="comment">投稿</label>
+    <textarea name="comment_data" id="" cols="100" rows="6"></textarea>
+    <p></p>
+    <label for="name">名前</label>
+    <input type="text" name="name">
+    <button type="submit">送信する</button>
+  </form>
+  <h2>投稿一覧</h2>
+  {% block body %}
+  <form action="" method="POST">
+    <table class="table">
+      <thead class="thread-dark">
+        <tr>
+          <th>日付</th>
+          <th>名前</th>
+          <th>投稿内容</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for th in lines %}
+        <tr>
+          <td>{{ th.pub_date }}</td>
+          <td>{{ th.name }}</td>
+          <td>{{ th.comment }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </form>
+  {% endblock %}
+  <p></p>
+</body>
+</html>

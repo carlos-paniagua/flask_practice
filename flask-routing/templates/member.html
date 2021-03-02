@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p></p>
+  <table>
+    <tr>
+      <th>社員ID</th>
+      <th>社員名</th>
+    </tr>
+    <tbody>
+      {% block body %}
+      {% for d in lists %}
+      <tr>
+        <td>{{ d[0] }}</td>
+        <td>{{ d[1] }}</td>
+        <td>
+          <a href= "{{ url_for('detail',id_=d[0],name=d[1]) }}">詳細</a>
+        </td>
+      </tr>
+      {% endfor %}
+      {% endblock %}
+    </tbody>
+  </table>
+  <p></p>
+  <a href="/redirects">トップ画面にリダイレクト</a>
+</body>
+</html>
